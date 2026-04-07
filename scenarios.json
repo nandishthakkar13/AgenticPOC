@@ -1,0 +1,90 @@
+[
+  {
+    "id": "TC001",
+    "name": "Amazon Laptop Search",
+    "description": "Search for laptops on Amazon and click the first result",
+    "baseUrl": "https://www.amazon.com",
+    "steps": [
+      {
+        "action": "navigate",
+        "target": "https://www.amazon.com",
+        "description": "Open the Amazon homepage"
+      },
+      {
+        "action": "type",
+        "target": "search box",
+        "value": "laptops",
+        "description": "Enter 'laptops' into the main search bar"
+      },
+      {
+        "action": "click",
+        "target": "search button",
+        "description": "Click the search/submit button"
+      },
+      {
+        "action": "click",
+        "target": "first search result",
+        "description": "Click on the first product in the search results"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "name": "Google Search and Navigate",
+    "description": "Perform a Google search and visit the first organic result",
+    "baseUrl": "https://www.google.com",
+    "steps": [
+      {
+        "action": "navigate",
+        "target": "https://www.google.com",
+        "description": "Open the Google homepage"
+      },
+      {
+        "action": "type",
+        "target": "search box",
+        "value": "OpenAI ChatGPT",
+        "description": "Type 'OpenAI ChatGPT' into the Google search input"
+      },
+      {
+        "action": "click",
+        "target": "search button",
+        "description": "Submit the search query"
+      },
+      {
+        "action": "click",
+        "target": "first search result",
+        "description": "Click the first organic search result link"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "name": "Wikipedia Article Verification",
+    "description": "Navigate to Wikipedia, search for Python programming language, and verify the page title",
+    "baseUrl": "https://www.wikipedia.org",
+    "steps": [
+      {
+        "action": "navigate",
+        "target": "https://www.wikipedia.org",
+        "description": "Open the Wikipedia main page"
+      },
+      {
+        "action": "type",
+        "target": "search box",
+        "value": "Python programming language",
+        "description": "Enter 'Python programming language' in the search field"
+      },
+      {
+        "action": "click",
+        "target": "search button",
+        "description": "Click the search button to submit the query"
+      },
+      {
+        "action": "assert",
+        "target": "page title",
+        "value": "Python (programming language)",
+        "description": "Verify that the resulting page title contains the expected text"
+      }
+    ]
+  }
+]
