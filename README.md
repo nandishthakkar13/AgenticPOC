@@ -7,19 +7,6 @@ A **LangChain-based AI agent** that reads test scenario definitions from a JSON 
 
 ---
 
-## Technology Stack
-
-| Component | Technology | Why |
-|---|---|---|
-| Agent framework | **LangChain** (Python) | Provides a mature, tool-calling agent loop with built-in error handling, scratchpad management, and multi-provider LLM support |
-| LLM (default) | **OpenAI GPT-4o** | Best balance of speed, cost, and code-generation quality for structured output |
-| LLM (alternative) | **Anthropic Claude 3.5 Sonnet** | Switchable via a single env var; strong at following detailed formatting instructions |
-| Agent pattern | **Tool-calling agent** (`create_tool_calling_agent`) | Uses the LLM's native function/tool-calling API for reliable, structured tool invocations |
-| Test output 1 | **Selenium WebDriver** (Java 17+, TestNG) | Industry-standard browser automation with POM for maintainability |
-| Test output 2 | **Cypress** (TypeScript) | Modern, developer-friendly E2E testing with built-in retry-ability |
-
----
-
 ## End-to-End Execution Flow
 
 Below is a step-by-step walkthrough of exactly what happens when you run the agent against the included `scenarios.json` (using the Amazon laptop search scenario as an example).
@@ -230,16 +217,3 @@ The agent handles several edge cases:
 | LLM returns unparseable code blocks | Fallback saves the raw LLM response as a single file |
 | API key not set | Agent exits immediately with setup instructions |
 | LLM produces malformed tool calls | `AgentExecutor` retries with the error message |
-
----
-
-## Design Decisions & Alternatives Considered
-
-| Decision | Chosen | Alternative | Why |
-|---|---|---|---|
-| Agent framework | LangChain | Plain OpenAI API, AutoGen, CrewAI | LangChain offers the best balance of maturity, ecosystem, and simplicity for a single-agent tool-use pattern |
-| Agent type | Tool-calling agent | ReAct (text-parsing), Plan-and-execute | Native tool calling is faster and more reliable than text-based action parsing |
-| LLM | GPT-4o (default) | GPT-4-turbo, Claude 3 Opus | GPT-4o has the best speed/quality ratio; Claude available as a switch |
-| Selenium pattern | Page Object Model | Screenplay, raw WebDriver | POM is the industry standard; interviewers expect it |
-| Cypress language | TypeScript | JavaScript | TypeScript is the modern default for Cypress projects |
-| Tool granularity | 3 separate tools | 1 monolithic tool | Fine-grained tools give the agent more control and better error recovery |
